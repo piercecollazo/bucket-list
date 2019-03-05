@@ -1,6 +1,6 @@
 // Global variables ftw
 
-
+let listArray = [];
 let isStack = true;
 
 // Set init to run when the window loads.
@@ -33,16 +33,16 @@ function addNewItem(event) {
     displayItem(newItem);
 
     // Now comes your part: add the item to the list.
-
+    listArray.push(newItem);
 
     // Display it in next-item if it's the first item:
-    if(false) { // definitely change that condition!
-        document.querySelector('#next-item').innerText = ''; // Replace that empty string with the actual item!
+    if(listArray[0] === newItem) {
+        document.querySelector('#next-item').innerText = newItem;
     } 
 
-    document.querySelector('#newest-item').innerText = '' // Replace that empty string with the actual item!
+    document.querySelector('#newest-item').innerText = listArray[listArray.length - 1];
 
-    document.querySelector('#number-of-items').innerText = 0 // Replace that with the number of items!
+    document.querySelector('#number-of-items').innerText = listArray.length; 
 }
 
 function removeItem(event) {
@@ -51,12 +51,14 @@ function removeItem(event) {
 
     if(isStack) {
         removeLastFromPage();
-        // Your code to remove it from the array  goes here!
+        listArray.pop();
+        document.querySelector('#number-of-items').innerText = listArray.length;
 
 
     } else {
         removeFirstFromPage();
-        // Your code to remove it from the array goes here!
+        listArray.shift();
+        document.querySelector('#number-of-items').innerText = listArray.length;
 
 
     }
@@ -80,13 +82,13 @@ Feel free to check it out though.
 function removeLastFromPage() {
     const items = document.querySelectorAll('li');
     const lastItem = items[items.length - 1];
-    lastItem.parentNode.removeChild(lastItem);
+    lastItem.parentNode.removeChild(lastItem); 
 }
 
 function removeFirstFromPage() {
     const items = document.querySelectorAll('li');
     const firstItem = items[0];
-    firstItem.parentNode.removeChild(firstItem);
+    firstItem.parentNode.removeChild(firstItem); 
 }
 
 function resetInput() {
