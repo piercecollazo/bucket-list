@@ -62,6 +62,14 @@ function removeItem(event) {
     }
 }
 
+function toggleQueueAndStack(event) {
+    // Prevent page reload.
+    event.preventDefault()
+
+    // How can we toggle whether it's a stack or a queue?
+    // Your code below!
+}
+
 /*
 
 No need to touch anything below!
@@ -91,12 +99,4 @@ function displayItem(itemText) {
     const newItem = document.createElement('li');
     newItem.innerText = itemText;
     document.querySelector('#items').appendChild(newItem);
-}
-
-function toggleQueueAndStack(event) {
-    // Prevent page reload.
-    event.preventDefault()
-
-    // Toggles global variable. All good here!
-    isStack = !isStack;
 }
