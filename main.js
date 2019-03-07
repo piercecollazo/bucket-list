@@ -56,19 +56,20 @@ function addNewItem(event) {
 
 function removeItem(event) {
     // Prevent page reload.
-    let newestItemOut = listArray.length
     event.preventDefault()
     if(isStack === true){
     removeLastFromPage();
+    document.querySelector('#next-item').innerText = listArray[1]
     } else{
         removeFirstFromPage();
+    document.querySelector('#next-item').innerText = listArray[1]
     }
     listArray.shift();
 
-    if(newestItemOut === 1){
-        newestItemOut = 'Your bucket list is empty!'
+    if(listArray.length === 0){
+        document.querySelector('#newest-item').innerText = 'Your bucket list is empty!';
+        document.querySelector('#next-item').innerText = 'None';
     }
-    document.querySelector('#newest-item').innerText = newestItemOut;
     document.querySelector('#number-of-items').innerText = listArray.length;
 }
 
@@ -80,10 +81,12 @@ function toggleQueueAndStack(event) {
     // Your code below!
     if(isStack === true){
         isStack = false;
+        document.querySelector('#next-item').innerText = listArray[listArray.length - 1];
         document.querySelector('#toggle').innerText = 'Toggle to Stack'
         document.querySelector('#items').removeAttribute('class', 'stacked');
     } else{
         isStack = true;
+        document.querySelector('#next-item').innerText = listArray[0];
         document.querySelector('#toggle').innerText = 'Toggle to Queue'
         document.querySelector('#items').setAttribute('class', 'stacked');
     }
