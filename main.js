@@ -82,12 +82,16 @@ function toggleQueueAndStack(event) {
     // Your code below!
     if(isStack === true){
         isStack = false;
-        document.querySelector('#next-item').innerText = listArray[listArray.length - 1];
+        if(listArray.length > 0){
+            document.querySelector('#next-item').innerText = 'Your next item is: ' + listArray[listArray.length - 1];
+        }
         document.querySelector('#toggle').innerText = 'Toggle to Stack'
         document.querySelector('#items').setAttribute('class', 'row queued');
     } else{
         isStack = true;
-        document.querySelector('#next-item').innerText = listArray[0];
+        if(listArray.length > 0){
+            document.querySelector('#next-item').innerText = 'Your next item is: ' + listArray[listArray.length - 1];
+        }
         document.querySelector('#toggle').innerText = 'Toggle to Queue'
         document.querySelector('#items').setAttribute('class', 'row stacked');
     }
