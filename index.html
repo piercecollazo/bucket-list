@@ -7,30 +7,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css">
     <script src="main.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
-    <div>
-        <h1 id="heading">The Bucket List</h1>
+    <div class="container">
+        <div class="row">
+            <h1 id="heading">The Bucket List</h1>
+        </div>
+
+        <div class="row" id="toDo">
+            <ul class="row stacked" id="items">
+            </ul>
+            <div>
+                <h3 id="newest-item"></h3>
+            </div>
+            <div>
+                <h3 id="next-item"></h3>
+            </div>
+            <div>
+                <h3 id="number-of-items"></h3>
+            </div>
+            <div>
+                <h3 id="completed-item"></h3>
+            </div>
+        </div>
+
+        <form class="textInput">
+            <input type="text" id="new-item">
+            <button id="submit">Add An Item</button>
+            <button id="remove">Remove An Item</button>
+            <button id="toggle">Toggle to Queue</button>
+        </form>
+
+        <div class="row" id="complete">
+                <h3 id="done"></h3>
+        </div>
     </div>
-    <ul class="stacked" id="items">
-    </ul>
-    <div>
-        <h3 id="newest-item"></h3>
-    </div>
-    <div>
-        <h3 id="next-item"></h3>
-    </div>
-    <div>
-        <h3 id="number-of-items"></h3>
-    </div>
-    <div>
-        <h3 id="completed-item"></h3>
-    </div>
-    <form>
-        <input type="text" id="new-item">
-        <button id="submit">Add An Item</button>
-        <button id="remove">Remove An Item</button>
-        <button id="toggle">Toggle to Queue</button>
-    </form>
 </body>
 </html>

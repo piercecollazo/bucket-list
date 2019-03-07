@@ -41,36 +41,37 @@ function addNewItem(event) {
 
     // Display it in next-item if it's the first item:
     if(listArray.length === 1) {
-        document.querySelector('#next-item').innerText = newItem;
+        document.querySelector('#next-item').innerText = 'Your next item is: ' + newItem;
     } else{
-        document.querySelector('#next-item').innerText = listArray[0]
+        document.querySelector('#next-item').innerText = 'Your next item is: ' + listArray[0]
     }
     if(isStack != true){
-        document.querySelector('#newest-item').innerText = listArray[listArray.length - 1];
-        document.querySelector('#next-item').innerText = listArray[0];
+        document.querySelector('#newest-item').innerText = 'Your latest entry is: ' + listArray[listArray.length - 1];
+        document.querySelector('#next-item').innerText = 'Your next item is: ' + listArray[0];
     } else{
-        document.querySelector('#newest-item').innerText = listArray[0];
+        document.querySelector('#newest-item').innerText = 'Your latest entry is: ' + listArray[0];
     }
-    document.querySelector('#number-of-items').innerText = listArray.length; 
+    document.querySelector('#number-of-items').innerText = 'Entries left: ' + listArray.length; 
 }
 
 function removeItem(event) {
     // Prevent page reload.
     event.preventDefault()
+    document.querySelector('#done').innerText = 'Your last completed task: ' + listArray[0];
     if(isStack === true){
     removeLastFromPage();
-    document.querySelector('#next-item').innerText = listArray[1]
+    document.querySelector('#next-item').innerText = 'Your next item is: ' + listArray[1];
     } else{
         removeFirstFromPage();
-    document.querySelector('#next-item').innerText = listArray[1]
+    document.querySelector('#next-item').innerText = 'Your next item is: ' + listArray[1];
     }
     listArray.shift();
 
     if(listArray.length === 0){
         document.querySelector('#newest-item').innerText = 'Your bucket list is empty!';
-        document.querySelector('#next-item').innerText = 'None';
+        document.querySelector('#next-item').innerText = 'Your have no more items up next!';
     }
-    document.querySelector('#number-of-items').innerText = listArray.length;
+    document.querySelector('#number-of-items').innerText = 'Entries left: ' + listArray.length;
 }
 
 function toggleQueueAndStack(event) {
@@ -83,12 +84,12 @@ function toggleQueueAndStack(event) {
         isStack = false;
         document.querySelector('#next-item').innerText = listArray[listArray.length - 1];
         document.querySelector('#toggle').innerText = 'Toggle to Stack'
-        document.querySelector('#items').removeAttribute('class', 'stacked');
+        document.querySelector('#items').setAttribute('class', 'row queued');
     } else{
         isStack = true;
         document.querySelector('#next-item').innerText = listArray[0];
         document.querySelector('#toggle').innerText = 'Toggle to Queue'
-        document.querySelector('#items').setAttribute('class', 'stacked');
+        document.querySelector('#items').setAttribute('class', 'row stacked');
     }
 }
 
